@@ -36,6 +36,6 @@ Rest of the configs can be found in `.config`. Checkout `Brewfile`  and `.gemlis
 
 ## TODO
 
-- [] Add a script to automatically sync changes to dotfiles as part of `upd` function
-- [] Add a script to stow things to place. This is low priority since I don't switch systems often.
-- [] Rick roll somewhere...
+- [ ] Add a script to automatically sync changes to dotfiles as part of `upd` function
+- [ ] Add a script to stow things to place. This is low priority since I don't switch systems often.
+- [ ] Rick roll somewhere...
