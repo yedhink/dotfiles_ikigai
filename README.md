@@ -26,7 +26,7 @@ Rest of the configs can be found in `.config`. Checkout `Brewfile`  and `.gemlis
 ![](images/home.png)
 
 - A sample workflow where I am writing backend tests in Rails in my tmux sesh with `entr` running the tests:
-![](images/workflow.mov)
+![](https://github.com/yedhink/dotfiles_ikigai/tree/main/images/workflow.mov)
 
 - Neovim - simple, elegant, fast!
 ![](images/neovim.png)
