@@ -1,0 +1,90 @@
+export EDITOR="vim"
+#export TERM="xterm-kitty"
+#export TERMINFO="~/.local/kitty.app/share/terminfo/"
+
+export CHROMIUM_FLAGS="--force-dark-mode --enable-features=WebUIDarkMode --incognito"
+
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US.UTF-8"
+export LC_COLLATE="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+export LC_MESSAGES="en_US.UTF-8"
+export LC_MONETARY="en_US.UTF-8"
+export LC_NUMERIC="en_US.UTF-8"
+export LC_TIME="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
+PATH=~/kde/kdesrc-build:$PATH
+
+# add pip binaries
+PATH="$PATH:$HOME/.local/bin"
+
+# add pyenv python bins
+export PYENV_ROOT="$HOME/.pyenv"
+PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init --path)"
+fi
+
+# add node modules
+PATH="$PATH:$HOME/node_modules/.bin"
+
+# add snap packages
+PATH="$PATH:/snap/bin"
+
+# setup yarn
+PATH="$PATH:/usr/bin/yarn"
+
+# setup go
+PATH="$PATH:/usr/local/go/bin"
+PATH="$PATH:$HOME/go/bin"
+
+# setup lua ls
+PATH="$PATH:/usr/local/bin/lua-language-server"
+
+# RUBY,RBENV STUFF 
+# output of eval "$(rbenv init - zsh)"
+PATH="$PATH:$HOME/.rbenv/bin"
+PATH="$PATH:$HOME/.rbenv/shims"
+export RBENV_SHELL=zsh
+
+# better exceptions for python
+export BETTER_EXCEPTIONS=1  # Linux / OSX
+
+# libreoffice theme
+export SAL_USE_VCLPLUGIN=gtk3
+
+# psql editor access using \e
+export PSQL_EDITOR="/usr/bin/vim"
+
+# psql config
+export PSQLRC="$HOME/.psqlrc"
+
+# node from nvm
+#PATH="$PATH:$HOME/.nvm/versions/node/v12.18.3/bin/"
+
+# make LESS not wrap when horizontal width is filled
+export BAT_PAGER="less -RS"
+
+# add ripgrep-all for finding text in pdfs,pptx etc
+# PATH="$PATH:$HOME/.local/bin/ripgrep_all-v0.9.6-x86_64-unknown-linux-musl"
+
+# to find nvm node for vscode so that it shuts up about yarn version
+NODE_PATH=`which node`
+
+export SOLARGRAPH_GLOBAL_CONFIG="$HOME/.config/solargraph/config.yml"
+
+RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+
+export THOR_MERGE="code-insiders -d $1 $2"
+
+export SEMAPHORE_CI_ACCESS_TOKEN="ML_xVxf6dmxDsWy3hpv7"
+export SEMAPHORE_BB_ORG="bigbinary.semaphoreci.com"
+
+export SOLARGRAPH_GLOBAL_CONFIG="~/.config/solargraph/config.yml"
+
+export HELIX_RUNTIME=~/src/helix/runtime
+
+export FZF_BASE="/opt/homebrew/opt/fzf"
+
+GOPATH="~/go/bin/"

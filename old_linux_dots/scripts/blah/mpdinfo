@@ -1,0 +1,43 @@
+
+_music_info()
+{
+	case $1 in
+		 state)
+			mpc status | awk 'NR==2 {print $1}' | tr -d '[]'
+			;;
+		now_playing|current|np)
+			mpc current
+			;;
+		artist)
+			mpc -f "[%artist%]" | head -n 1
+			;;
+		 album)
+			mpc -f "[%album%]" | head -n 1
+			;;
+		 title)
+			mpc -f "[%title%]|[%file%]" | head -n 1
+			;;
+		 total)
+			mpc -f "%time%" | head -n 1
+			;;
+		played)
+			mpc status | awk 'NR==2 {print $3}' | cut -d '/' -f 1
+			;;
+		track)
+			mpc | awk 'NR==2 {print $2}' | cut -d '#' -f2
+			;;
+		   vol)
+			mpc volume | tr -cd '0-9'
+			;;
+		played_perc)
+			mpc status | awk 'NR==2 { print $4 }' | tr -d '()'
+			;;
+		*)
+			printf "$0: %s\n" "Unknown Option"
+			exit 1
+			;;
+	esac
+
+	return 0
+}
+# vim: set ft=sh noet:

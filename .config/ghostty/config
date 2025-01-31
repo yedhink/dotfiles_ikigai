@@ -1,0 +1,29 @@
+theme = "ayu"
+
+window-padding-x = 0
+window-padding-y = 0
+window-padding-balance = true
+window-padding-color = extend
+window-step-resize = true
+
+window-decoration = true
+macos-titlebar-style = transparent
+macos-titlebar-proxy-icon = hidden
+
+window-save-state = always
+
+font-family = "Maple Mono NF"
+font-size = 17
+font-thicken = true
+
+cursor-style = block
+cursor-style-blink = true
+mouse-hide-while-typing = true
+copy-on-select = clipboard
+
+shell-integration-features = no-cursor
+
+quit-after-last-window-closed = true
+
+macos-option-as-alt = true
+

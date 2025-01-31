@@ -1,0 +1,81 @@
+#!/usr/bin/bash
+
+
+
+#Curl weather from www.wttr.in and print it to terminal
+
+##Lis tof available options by priority
+#if no args are provided print overview + today
+#few -- print the temperature only
+#all -- print all following args
+#overview -- print overview
+#today -- print weather for today
+#tomorrow -- print weather for tomorrow
+#overmorrow -- print weather for overmorrow
+
+#Retrieving URL
+WURL="http://www.wttr.in/Kochi,India"
+function COND {
+  curl -s $WURL | tail -n 38| head -n 1 | perl -pe 's/\x1b\[[0-9;]*m//g' | cut -c 16- | perl -pe 's/[\s]*\n//g'
+}
+
+function TEMP {
+	curl -s $WURL | tail -n 37| head -n 1| perl -pe 's/\x1b\[[0-9;]*m//g' | cut -c 16- | perl -pe 's/[\s]*\n//g'
+}
+
+function OVERVIEW {
+	curl -s $WURL | head -n 7
+}
+
+function TODAY {
+	curl -s $WURL | head -n 17 | tail -n 10
+}
+
+function TOMORROW {
+	curl -s $WURL | head -n 27 | tail -n 10
+}
+
+function OVERMORROW {
+	curl -s $WURL | tail -n 13 | head -n 10
+}
+
+function NO_ARGS { #overview + today
+	curl -s $WURL | head -n 17
+}
+
+function ALL {
+	curl -s $WURL | head -n 37
+}
+
+if [[ $# -eq 0 ]]; then  								#No arguments, print overview + today
+	NO_ARGS
+else
+	#remove duplicate
+	args=($(echo "$@" | tr ' ' '\n' | sort -u | tr '\n' ' '))
+	
+	#Check for arguments by priorities
+	if `echo ${args[@]} | grep -q "all"` ; then 					#print everything once and at once and in order
+		ALL
+	else	#print each options by priority
+		if `echo ${args[@]} | grep -q "bar"` ; then 				#print temperature only
+      { TEMP; echo " "; COND; } | tr "[\W]*\n" " " 
+    elif `echo ${args[@]} | grep -q "temperature"`; then
+      TEMP
+    elif `echo ${args[@]} | grep -q "condition"` ; then
+      COND
+    else 									#print each option by priority
+			if `echo ${args[@]} | grep -q "overview"` ; then
+				OVERVIEW
+			fi
+			if `echo ${args[@]} | grep -q "today"` ; then
+				TODAY
+			fi
+			if `echo ${args[@]} | grep -q "tomorrow"` ; then
+        TOMORROW
+      fi
+			if `echo ${args[@]} | grep -q "overmorrow"` ; then
+        OVERMORROW
+      fi
+		fi
+	fi
+fi

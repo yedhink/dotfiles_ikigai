@@ -1,0 +1,83 @@
+source ~/.fzf.zsh
+
+			
+#export FZF_DEFAULT_OPTS="--ansi"
+export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:40%' --preview 'bat_ls {}'"
+export FZF_DEFAULT_COMMAND='fd $pwd --follow --hidden --exclude .git --exclude node_modules --exclude yarn.lock --exclude Gemfile.lock --color=always'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
+
+
+# open files as quick as a fox
+fzf_vim() {
+    fzf_file=$(fd . | fzf)
+    if [[ -z $fzf_file ]]; then
+        :
+    else
+       if [[ -f $fzf_file ]]; then
+           v $fzf_file
+       else
+           cd $fzf_file
+       fi
+    fi
+}
+zle -N fzf_vim
+bindkey '\C-f' fzf_vim
+
+# fshow - git commit browser
+fshow() {
+  git log --graph --color=always \
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+      --bind "ctrl-m:execute:
+                (grep -o '[a-f0-9]\{7\}' | head -1 |
+                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+                {}
+FZF-EOF"
+}
+
+# fzf bookmarks
+# add bookmarks
+cdg-add () {
+    if [[ ! -z "$@" ]]; then
+        local curr_dir="${PWD}/"$@""
+    else
+        #local curr_dir="${PWD} # $*"
+        local curr_dir="${PWD}/"
+    fi
+    if ! grep -Fxq "$curr_dir" ~/.cdg_paths; then
+        echo "$curr_dir" >> ~/.cdg_paths
+    fi
+}
+zle -N cdg-add
+bindkey '\e[24~' cdg-add
+
+# Setup cdg function
+# ------------------
+unalias cdg 2> /dev/null
+cdg() {
+   local dest_dir=$(cdscuts_glob_echo | fzf )
+   if [[ $dest_dir != '' ]]; then
+       if [[ -f $dest_dir ]]; then
+           v $dest_dir
+       else
+           cd $dest_dir
+       fi
+   fi
+}
+zle -N cdg
+bindkey '\e[23~' cdg
+
+# list only directories and cd into it
+bindkey '\C-g' fzf-cd-widget
+
+
+# change kitty theme on the fly
+kitty_theme_fzf() {
+theme_root="/home/ikigai/.config/kitty/kitty-themes/themes"
+    ls "$theme_root" |
+  fzf --height 30% --layout reverse --info inline --border --bind=ctrl-s:toggle-sort --bind "ctrl-m:execute: (
+      kitty @ set-colors -a "/home/ikigai/.config/kitty/kitty-themes/themes/{}"
+  )"
+}
+zle -N kitty_theme_fzf

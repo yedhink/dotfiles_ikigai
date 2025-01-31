@@ -1,0 +1,13 @@
+if [ -z "$@" ]; then
+	eza -l -h --color always --color-scale --sort=modified --no-permissions --no-user "."
+else
+	for file in "$@"; do
+		echo "$file"
+		if [ -d "$file" ]; then
+			eza -l -h --color always --color-scale --sort=modified --no-permissions --no-user "$file"
+		elif [ -f "$file" ]; then
+			bat --color=always --style=header,grid --line-range :300 "$file"
+		fi
+	done
+fi
+

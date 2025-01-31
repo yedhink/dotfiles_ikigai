@@ -1,0 +1,27 @@
+{
+  "files": {
+    "ignore": ["**/*.min.js", "node_modules/**/*"],
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space", // default is `tab`
+  },
+  "linter": {
+    "enabled": false,
+    "rules": { "recommended": true },
+  },
+  "organizeImports": {
+    "enabled": false
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double", // default is `double`
+      "arrowParentheses": "asNeeded",
+    }
+  },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true,
+  },
+}

@@ -1,0 +1,55 @@
+#!/bin/bash
+killall lemonbar || echo
+wif() {
+    # Read wifi information from file populated by NetworkManager hook.
+	cur=$(grep "wlp5s0" /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
+    wif="$cur \\uf1eb"
+}
+
+bri() {
+    # Read brightness from file.
+    cur="$(< /sys/class/backlight/intel_backlight/brightness)"
+    bri="$((cur / 10 + 7))% \\uf0eb"
+}
+
+bat() {
+    # Read battery status from file.
+    cur="$(< /sys/class/power_supply/BAT0/capacity)"
+    sta="$(< /sys/class/power_supply/BAT0/status)"
+
+    case "$cur" in
+        [0-9])  bat_icon="\\uf244" ;;
+        [1-3]?) bat_icon="\\uf243" ;;
+        [4-5]?) bat_icon="\\uf242" ;;
+        [6-7]?) bat_icon="\\uf241" ;;
+        *)      bat_icon="\\uf240" ;;
+    esac
+
+    [[ "$sta" == Charging ]] && \
+        bat_icon+="  \\uf0e7"
+
+    bat="${cur}% $bat_icon"
+}
+
+vol() {
+	cur=`amixer get Master | awk '/Front/ {print $5}' | tail -2 | cut -b 2-3 | paste -sd+ - | bc | (read volm;(( volm=volm/2 ));echo $volm)`
+    case "$cur" in
+        [0-9]) vol_icon="\\uf026" ;;
+        [9-60])    vol_icon="\\uf027" ;;
+        [60-100])  vol_icon="\\uf028" ;;
+    esac
+ 	vol="${cur}% "
+}
+
+tim() {
+    printf "%(%a %d %b  - %l:%M %p)T" "-1"
+}
+
+#$1 is from tmux supplying column width.
+if (( "$1" > 62 )); then
+    bri
+    vol
+    wif
+    bat
+    printf "%b\\n" "$bri  $vol   $wif   $bat  "
+fi

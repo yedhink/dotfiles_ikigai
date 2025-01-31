@@ -1,0 +1,90 @@
+#set recolor-darkcolor "#93A1A1"
+#set recolor-lightcolor "#002B36"
+set recolor true
+
+# colors
+#set statusbar-bg "#000000"
+#set statusbar-fg "#CC0000"
+#set default-fg "#FFFFFF"
+#set default-bg "#000000"
+
+# keybindings
+map [fullscreen] a adjust_window best-fit
+map [fullscreen] s adjust_window width
+map [fullscreen] f follow
+map [fullscreen] <Tab> toggle_index
+map [fullscreen] j scroll down
+map [fullscreen] k scroll up
+
+# gruvbox
+
+set font                        "Hasklig 11"
+set default-bg                  "#271215"
+set default-fg                  "#BB8572"
+
+set statusbar-bg                "#282828"
+set statusbar-fg                "#ebdbb2"
+
+set inputbar-bg                 "#282828"
+set inputbar-fg                 "#ebdbb2"
+
+set notification-error-bg       "#fb4934"
+set notification-error-fg       "#282828"
+
+set notification-warning-bg     "#d3869b"
+set notification-warning-fg     "#282828"
+
+set highlight-color             "#fabd2f"
+set highlight-active-color      "#fe8019"
+
+set completion-highlight-bg     "#3c3836"
+set completion-highlight-fg     "#fb4934"
+
+set completion-bg               "#282828"
+set completion-fg               "#ebdbb2"
+
+set notification-bg             "#282828"
+set notification-fg             "#ebdbb2"
+
+set recolor-lightcolor          "#271215"
+set recolor-darkcolor           "#BB8572"
+
+# Setting recolor-keep true will keep any color your pdf has.
+# If it is false, it'll just be black and white.
+#set recolor-keephue             false
+
+# Rest of your configs go here:
+
+#set adjust-open width
+set pages-per-row 2
+set smooth-scroll true
+set selection-clipboard clipboard
+set incremental-search true
+set guioptions sv
+
+set window-title-home-tilde true
+set window-title-basename true
+set statusbar-home-tilde true
+set show-hidden true
+
+map d scroll half-down
+map u scroll half-up
+map x toggle_page_mode
+map <C-r> rotate
+map r recolor
+map <S-Up> zoom in
+map <S-Down> zoom out
+
+# zoom and scroll step size
+set zoom-step 20
+set scroll-step 80
+
+# copy selection to system clipboard
+set selection-clipboard clipboard
+
+# enable incremental search
+set incremental-search true
+
+# zoom
+map <C-i> zoom in
+map <C-o> zoom out

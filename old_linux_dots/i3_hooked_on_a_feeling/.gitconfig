@@ -1,0 +1,57 @@
+[color]
+	branch = true
+	diff = true
+	grep = true
+	interactive = true
+	pager = true
+	showBranch = true
+	status = true
+	ui = true
+
+[color "diff"]
+	context = 15
+	meta = 4 bold reverse
+	frag = 3 bold reverse
+	commit = 3 bold
+	old = 9
+	new = 10
+	oldMoved = 8
+	newMoved = 14
+	whitespace = 1 reverse
+
+[color "decorate"]
+	branch = 2 bold
+	remoteBranch = 1 bold
+	tag = 3 bold
+	stash = 5 bold
+	HEAD = 6 bold
+
+[color "interactive"]
+	prompt = 4 bold
+	header = 15 bold
+	help = 15
+	error = 1
+
+[color "status"]
+	header = 15 bold
+	added = 14 bold
+	changed = 11 bold
+	untracked = 9 bold
+	branch = 15 bold
+	nobranch = 9 bold reverse
+	localBranch = 2 bold
+	remoteBranch = 1 bold
+	unmerged = 1 bold reverse
+
+[alias]
+	ec = config --global --edit
+
+	lg = log --graph --format=format:'%C(auto)%h%C(reset) - %C(italic blue)%ad%C(reset) %C(italic cyan)(%ar)%C(reset)%C(auto)%d%C(reset)%n''%C(black)%h%C(reset)   %C(auto)%s%C(reset) %C(241)- %an%C(reset)%n' --graph
+	lgo = log --format='%C(auto)%h%C(reset)%C(auto)%d%C(reset) %C(auto)%s%C(reset) %C(italic blue)%ad%C(reset) %C(241)%an%C(reset)' --graph --date=short
+	lgm = log --format=medium --graph
+	lgmm = log --format=medium --graph --stat --summary
+	lgf = log --format=fuller --graph
+	lgff = log --format=fuller --graph --stat --summary
+
+# list aliases
+	alias = "!git config --get-regexp alias | cut -c 7- | sed -e \"s/^/[1m/\" -e \"s/ /[0m$(echo 2B | xxd -r -p)/\" | column -t -s \"$(echo 2B | xxd -r -p)\" | sort | less -SR "	

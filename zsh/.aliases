@@ -1,0 +1,56 @@
+alias v="nvim"
+alias remove='sudo apt-get purge --auto-remove'
+alias rr="ranger"
+alias cfz="nvim ~/.zshrc"
+alias k="k -h"
+alias cx="chmod a+x"
+
+# git specific
+#alias lg="lazygit"
+alias gs="git status"
+alias ga="git add"
+alias gA="git add -A"
+alias _git_current_branch="git rev-parse --abbrev-ref HEAD"
+alias gplom='git pull origin $(_git_current_branch)'
+alias gpuom='git push origin $(_git_current_branch)'
+alias gpuomf='git push origin $(_git_current_branch) --force-with-lease'
+alias gitsize="~/.local/bin/git-sizer --verbose"
+
+# suffix aliases -> opens foobar.tex in vim
+alias -s tex=nvim
+alias -s html=google-chrome
+alias -s org=nvim
+
+# to get faster directory size
+alias dush="/home/ikigai/dotfiles/scripts/dush"
+
+alias less='bat'
+
+alias snake='~/.local/bin/quinesnake.cpp'
+
+alias openports='lsof -i -P -n | grep -i listen'
+
+alias aq="asciiquarium"
+alias progall="watch progress -q"
+
+alias what="sudo ~/.local/bin/what"
+
+alias fx="/home/ikigai/.local/bin/fx-linux"
+
+alias gitlogdroppedstashes="git fsck --unreachable | grep commit | cut -d" " -f3 | xargs git log --merges --no-walk"
+
+alias yt_aria='youtube-dl --external-downloader aria2c  --external-downloader-args "-c -j 5 -x 10 --summary-interval=0" $@'
+
+alias c="code-insiders"
+
+# alias rename_ext="for f in styles/**/*.scss; do mv -- "$f" "${f%%.*}.module.scss"; done"
+
+# downloads best video+audio from youtube
+# alias yb="yt-dlp -f 'bv*+ba' $@"
+alias yb="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' $@"
+
+alias minikube="/Users/ikigai/Downloads/minikube-darwin-arm64"
+
+alias y="yazi"
+alias lg="lazygit"
+alias vconf="nvim ~/.config/nvim/init.lua"

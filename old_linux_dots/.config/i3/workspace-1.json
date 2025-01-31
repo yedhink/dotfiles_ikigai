@@ -1,0 +1,88 @@
+// vim:ts=4:sw=4:et
+{
+    // splitv split container with 2 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 1,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 284,
+               "width": 364,
+               "x": 0,
+               "y": 0
+            },
+            "name": "st",
+            "percent": 0.5,
+            "swallows": [
+               {
+               // "class": "^st\\-256color$",
+               // "instance": "^st\\-256color$",
+               // "title": "^st$",
+               // "transient_for": "^$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            // splith split container with 2 children
+            "border": "pixel",
+            "floating": "auto_off",
+            "layout": "splith",
+            "percent": 0.5,
+            "type": "con",
+            "nodes": [
+                {
+                    "border": "pixel",
+                    "current_border_width": 2,
+                    "floating": "auto_off",
+                    "geometry": {
+                       "height": 284,
+                       "width": 364,
+                       "x": 0,
+                       "y": 0
+                    },
+                    "name": "st",
+                    "percent": 0.5,
+                    "swallows": [
+                       {
+                       // "class": "^st\\-256color$",
+                       // "instance": "^st\\-256color$",
+                       // "title": "^st$",
+                       // "transient_for": "^$"
+                       }
+                    ],
+                    "type": "con"
+                },
+                {
+                    "border": "pixel",
+                    "current_border_width": 2,
+                    "floating": "auto_off",
+                    "geometry": {
+                       "height": 284,
+                       "width": 364,
+                       "x": 0,
+                       "y": 0
+                    },
+                    "name": "st",
+                    "percent": 0.5,
+                    "swallows": [
+                       {
+                       // "class": "^st\\-256color$",
+                       // "instance": "^st\\-256color$",
+                       // "title": "^st$",
+                       // "transient_for": "^$"
+                       }
+                    ],
+                    "type": "con"
+                }
+            ]
+        }
+    ]
+}
+

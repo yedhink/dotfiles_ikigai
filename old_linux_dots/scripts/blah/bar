@@ -1,0 +1,181 @@
+#!/bin/bash
+
+wif() {
+    # Read wifi information from file populated by NetworkManager hook.
+	cur=$(grep "wlp5s0" /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
+    wif="$cur \\uf1eb"
+}
+
+bri() {
+    # Read brightness from file.
+    cur="$(< /sys/class/backlight/intel_backlight/brightness)"
+    bri="$((cur / 10 + 7))% \\uf0eb"
+}
+
+bat() {
+    # Read battery status from file.
+    cur="$(< /sys/class/power_supply/BAT0/capacity)"
+    sta="$(< /sys/class/power_supply/BAT0/status)"
+
+    case "$cur" in
+        [0-9])  bat_icon="\\uf244" ;;
+        [1-3]?) bat_icon="\\uf243" ;;
+        [4-5]?) bat_icon="\\uf242" ;;
+        [6-7]?) bat_icon="\\uf241" ;;
+        *)      bat_icon="\\uf240" ;;
+    esac
+
+    [[ "$sta" == Charging ]] && \
+        bat_icon+="  \\uf0e7"
+
+    bat="${cur}% $bat_icon"
+}
+
+vol() {
+	cur=`amixer get Master | awk '/Front/ {print $5}' | tail -2 | cut -b 2-3 | paste -sd+ - | bc | (read volm;(( volm=volm/2 ));echo $volm)`
+    case "$cur" in
+        [0-9]) vol_icon="\\uf026" ;;
+        [9-60])    vol_icon="\\uf027" ;;
+        [60-100])  vol_icon="\\uf028" ;;
+    esac
+ 	vol="${cur}% "
+}
+
+tim() {
+    printf "%(%a %d %b-%l:%M %p)T" "-1"
+}
+
+cur=`printf "%b" " \\uf3a5"` 
+ocu=`printf "%b" " "`
+unu=`printf "%b" " x"` 
+
+# colors
+fg="$(xrdb -query | grep -w color2 | awk '{print $2}' | head -n 1)"
+fg1="$(xrdb -query | grep -w foreground | awk '{print $2}' | head -n 1)"
+
+accent="$(xrdb -query | grep -w background | awk '{print $2}' | head -n 1)"
+normal="$(xrdb -query | grep -w background | awk '{print $2}' | head -n 1)"
+
+#  print workspaces to stdout
+draw() {
+
+# get the current workspace
+
+ws=$(  xprop -root -notype _NET_CURRENT_DESKTOP | cut -d= -f2 )
+# icons
+	for i in {0..4}; do
+		# get the number of windows in each workspace
+		windows=$( wmctrl -l | cut -d ' ' -f3 | grep $i | wc -l )
+
+		if [[ $i -eq $ws ]]
+		then
+			# current workspace
+			echo -ne "%{B$accent}%{F$fg}$cur %{B-}"
+		else
+			if [[ $windows > 0 ]]
+			then
+				# occupied workspace
+				echo -ne "%{B$normal}%{F$fg1}  $ocu  %{B-}"
+			else
+				echo -ne "%{F$fg1}  $unu "
+			fi
+		fi
+	done
+}
+
+
+
+trunc() {
+    max_length=$1
+    text=$2
+    length=${#text}
+    (( length > max_length )) &&
+        text=${text::$(( max_length ))}…
+    echo "$text"
+}
+
+function song {
+
+# colors
+active="$( get_xres color7 )"
+inactive="$( get_xres color11 )"
+
+np_string=""
+
+stopped=`printf "%b" "  \\ufc59"` 
+paused=`printf "%b" "  \\ufafe"`
+if pgrep -x "mpd" > /dev/null
+then
+	np_string=`mpc current`
+	np_string=$( trunc 10 "$np_string" )
+
+	spc=$(( $(( 20 -${#np_string} ))/3 ))
+	spc="$( printf "%${spc}s" )"
+	
+	if [ $(grep -i play <(mpc status) > /dev/null ;echo $?) == 0 ]; then
+		seek=`mpc status | grep -i play | awk '{print $3}'`
+		echo "$spc%{F${active}} $np_string  $seek"
+	elif [ $(grep -i paus <(mpc status) > /dev/null ;echo $?) == 0 ]; then
+		echo "$spc%{F${inactive}}$paused "paused""
+	else 
+		echo "%{F${inactive}}$stopped "stopped""
+	fi
+fi
+
+}
+
+pkill lemonbar || :
+bgcolor=$(xrdb -query | grep background | awk '{print $2}' | tail -n 1)
+fgcolor=$(xrdb -query | grep foreground | awk '{print $2}' | tail -n 1)
+for((;;)) {
+
+	if [ $(mpc current | wc -l) != 0 ]; then
+		printf "%s%s\\n" "%{c}$(tim)$(song)" 
+	else
+		printf "%s\\n" "%{c}$(tim)" 
+	fi
+	sleep 2
+} |\
+
+lemonbar -db \
+         -g 400x30+40+2 \
+         -f "Hasklug Nerd Font Mono:style=Regular:size=14" \
+         -f "Font\ Awesome\ 5\ Free\ Solid:style=Solid:antialias=true:pixelsize=14" \
+         -n "bar" \
+		 -B "${1:-${bgcolor}}" \
+         -F "${2:-${fgcolor}}" & 
+
+for((;;)) {
+	bri
+	vol
+	wif
+	bat
+	printf "%b\\n" "%{c}$bri  $vol   $wif   $bat"
+	sleep 2
+} |\
+
+lemonbar -db \
+         -g 270x30+1055+2 \
+         -f "Hasklug Nerd Font Mono:style=Regular:size=14" \
+         -f "Font\ Awesome\ 5\ Free\ Solid:style=Solid:antialias=true:pixelsize=14" \
+         -n "bar" \
+		 -B "${1:-$bgcolor}" \
+         -F "${2:-$fgcolor}" & 
+
+
+for((;;)) {
+    printf "%s \\n" \
+           "%{c}$(draw)"
+	sleep 2
+} |\
+
+lemonbar -db \
+         -g 240x30+570+2 \
+         -f "Hasklug Nerd Font Mono:style=Regular:size=14" \
+         -f "Font\ Awesome\ 5\ Free\ Solid:style=Solid:antialias=true:pixelsize=14" \
+         -n "bar" \
+		 -B "${1:-${bgcolor}}" \
+         -F "${2:-${fgcolor}}" & 
+
+sleep 0.05
+xdo lower -a bar

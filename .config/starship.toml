@@ -1,0 +1,99 @@
+add_newline = false
+
+format = """
+[](left_bg_primary)\
+$directory\
+[](bg:left_bg_secondary fg:left_bg_primary)\
+$git_commit\
+$git_branch\
+$git_status\
+$git_state\
+$username\
+[](left_bg_secondary) \
+"""
+
+# move the rest of the prompt to the right
+right_format = """
+$all\
+$battery\
+"""
+
+palette = "default"
+[palettes.default]
+black = "#000000"
+left_bg_primary  = "#1892d9"
+left_bg_secondary  = "#f5cc00"
+
+[directory]
+style = "fg:black bg:left_bg_primary"
+format = "[$path]($style)"
+truncate_to_repo = true
+
+[git_commit]
+format = "[ $hash$tag]($style)"
+style = "fg:black bg:left_bg_secondary"
+only_detached = true
+commit_hash_length = 6
+tag_symbol = '🔖 '
+[git_branch]
+format = "[  $branch ]($style)"
+style = "fg:black bg:left_bg_secondary"
+[git_status]
+format = "[$all_status$ahead_behind]($style)"
+style = "fg:black bg:left_bg_secondary"
+ahead = ' $count'
+behind = ' $count'
+staged = ' $count '
+deleted = ' $count '
+renamed = '➜ $count '
+stashed = ' $count '
+untracked = '?$count '
+modified = ' $count '
+conflicted = 'has conflict '
+diverged = ' '
+up_to_date = ''
+# ---------- LEFT PROMPT ENDS ----------------
+
+# ---------- RIGHT PROMPT BEGINS -------------
+[cmd_duration]
+format = '[$duration]($style) '
+
+# ---------- BATTERY -------------
+[battery]
+full_symbol = "🔋 "
+charging_symbol = ""
+discharging_symbol = "󰁽"
+unknown_symbol = "󰁽"
+empty_symbol = "󰂎"
+format = "[$symbol$percentage]($style)"
+[[battery.display]]
+threshold = 100
+style = "bold green"
+[[battery.display]]
+threshold = 80
+style = "bold yellow"
+[[battery.display]]
+threshold = 20
+discharging_symbol = "󰂎"
+style = "bold red"
+# ---------------------------------
+
+# ---------- MODULES -------------
+[nodejs]
+format = '[$symbol($version )]($style)'
+
+[ruby]
+format = '[$symbol($version )]($style)'
+style = 'bold purple'
+# ---------------------------------
+
+# ---------- DISABLED -------------
+[character]
+disabled = true
+[package]
+disabled = true
+[line_break]
+disabled = true
+[bun]
+disabled = true
+# ---------------------------------

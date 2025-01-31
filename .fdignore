@@ -1,0 +1,10 @@
+*.bak
+*.a
+*.so
+*CMakeF*
+*CMakeC*
+*.cmake*
+**/node_modules/**/*
+yarn.lock
+Gemfile.lock
+tmp

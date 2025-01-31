@@ -1,0 +1,12 @@
+[tools]
+node = "lts"
+python = "3.13.1"
+ruby = "latest"
+
+[hooks]
+enter = "mise install"
+
+[settings]
+
+[settings.python]
+compile = true

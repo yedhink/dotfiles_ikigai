@@ -1,0 +1,203 @@
+set $mod Mod4
+
+font pango:Hasklug Nerd Font Complete Mono 9
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec --no-startup-id urxvt 
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec " dmenu_run -nf '#F3F4F5' -nb '#2F343F' -sb '#1793D1' -sf '#f3f4f5' -fn 'monospace-10' -p 'run:'"
+
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+
+# start rofi (dmenu mode)
+bindsym $mod+z exec i3-dmenu-desktop --dmenu='rofi -dmenu -i -lines 10 -eh 1 -width 70 -padding 50 -opacity "85" -font "Droid Sans 14"'  
+
+# start rofi (window mode)
+bindsym $mod+Tab exec rofi -show window -i -lines 10 -eh 1 -width 50 -padding 50 -opacity "85" -font "Droid Sans 16"
+bindsym Mod1+Tab exec rofi -show window -i -lines 10 -eh 1 -width 50 -padding 50 -opacity "85" -font "Droid Sans 16"
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+#bindsym $mod++l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+bindsym $mod+Control+r exec ranger
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 1 px or 1 ppt
+        bindsym Down resize grow height 1 px or 1 ppt
+        bindsym Up resize shrink height 1 px or 1 ppt
+        bindsym Right resize grow width 1 px or 1 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# screenshot
+bindsym Print exec scrot '%S:%M:%H_%Y-%m-%d_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots/'
+bindsym Mod1+Print exec scrot -u $HOME/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym Mod1+Shift+Print exec scrot -s $HOME/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+
+
+bindsym $mod+Shift+d gaps inner current set 0; gaps outer current set 0
+bindsym $mod+Shift+t gaps inner current set 20; gaps outer current set 20
+bindsym $mod+bracketleft	gaps inner current plus 5
+bindsym $mod+bracketright	gaps inner current minus 5
+# custom keybinding to lockscreen, use --lock dim or --lock blur below for different backgrounds
+bindsym $mod+l exec --no-startup-id betterlockscreen -l
+bindsym $mod+Mod1+k exec --no-startup-id pkill -f tmux
+# change color schemes
+bindsym $mod+Mod1+d exec --no-startup-id bash ~/dotfiles/scripts/switchcolors.sh 0 	
+bindsym $mod+Mod1+l exec --no-startup-id bash ~/dotfiles/scripts/switchcolors.sh 1	
+# volume control
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2%- unmute
+bindsym XF86AudioMute exec amixer -q set Master toggle
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+set_from_resource $base00 color0  #000000
+set_from_resource $base01 color18 #000000
+set_from_resource $base02 color19 #000000
+set_from_resource $base03 color8  #000000
+set_from_resource $base04 color20 #000000
+set_from_resource $base05 color7  #000000
+set_from_resource $base06 color21 #000000
+set_from_resource $base07 color15 #000000
+set_from_resource $base08 color1  #000000
+set_from_resource $base09 color16 #000000
+set_from_resource $base0A color11 #000000
+set_from_resource $base0B color2  #000000
+set_from_resource $base0C color14 #000000
+set_from_resource $base0D color12 #000000
+set_from_resource $base0E color5  #000000
+set_from_resource $base0F color17 #000000
+
+# white thin borders
+client.focused          $base05 $base05 $base00 $base05
+client.focused_inactive $base03 $base03 $base05 $base03
+client.unfocused        $base03 $base03 $base05 $base00
+client.urgent           $base01 $base01 $base05 $base00
+
+#;move container to workspaces 
+for_window [class="feh"] move container to workspace 4
+for_window [class="qbittorrent"] move container to workspace 4
+for_window [class="qutebrowser"] move container to workspace 2
+for_window [class="Subl3"] move container to workspace 3
+for_window [class="^.*"] border pixel 1 
+
+# window style
+new_float normal
+hide_edge_borders none
+
+for_window [class="URxvt"] floating enable
+for_window [class="mpv"] border pixel 0,floating enable
+for_window [class="MPlayer"] floating enable
+for_window [class="xv"] floating enable
+
+# gaps and borders
+gaps inner 20 
+gaps outer 20
+new_window pixel 3
+new_float  pixel 3
+
+exec --no-startup-id compton --config ~/compton.conf -b
+exec --no-startup-id mpd
+# copy and paste buffer
+exec autocutsel
+exec --no-startup-id ~/dotfiles_ikigai/scripts/init_workspace.sh
+exec --no-startup-id bash /home/${USER}/dotfiles_ikigai/scripts/blah/switchcolors.sh 0
+# vim:filetype=i3

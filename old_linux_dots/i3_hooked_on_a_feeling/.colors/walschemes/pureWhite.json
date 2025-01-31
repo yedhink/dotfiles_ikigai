@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/ikigai/Pictures/flowerDylan.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#eeeeee",
+        "foreground": "#041D23",
+        "cursor": "#041D23"
+    },
+    "colors": {
+        "color0": "#eeeeee",
+        "color1": "#668c99",
+        "color2": "#996671",
+        "color3": "#668099",
+        "color4": "#99667c",
+        "color5": "#668399",
+        "color6": "#668399",
+        "color7": "#041D23",
+        "color8": "#7b7b7c",
+        "color9": "#668c99",
+        "color10": "#996671",
+        "color11": "#668099",
+        "color12": "#99667c",
+        "color13": "#668399",
+        "color14": "#668399",
+        "color15": "#041D23"
+    }
+}

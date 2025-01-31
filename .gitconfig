@@ -1,0 +1,41 @@
+[user]
+	email = yedhin1998@gmail.com
+	name = Yedhin Kizhakkethara
+
+[color]
+	ui = auto
+[branch]
+	autosetuprebase = always
+[init]
+  #templatedir= /home/ikigai/git-hooks/
+	defaultBranch = main
+[core]
+    #pager = delta --width 250 --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended' --keep-plus-minus-markers
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[alias]
+	ec = config --global --edit
+
+	lg = log --graph --format=format:'%C(auto)%h%C(reset) - %C(italic blue)%ad%C(reset) %C(italic cyan)(%ar)%C(reset)%C(auto)%d%C(reset)%n''%C(black)%h%C(reset)   %C(auto)%s%C(reset) %C(241)- %an%C(reset)%n' --graph
+	lgo = log --format='%C(auto)%h%C(reset)%C(auto)%d%C(reset) %C(auto)%s%C(reset) %C(italic blue)%ad%C(reset) %C(241)%an%C(reset)' --graph --date=short
+	lgm = log --format=medium --graph
+	lgmm = log --format=medium --graph --stat --summary
+	lgf = log --format=fuller --graph
+	lgff = log --format=fuller --graph --stat --summary
+
+# list aliases
+	alias = "!git config --get-regexp alias | cut -c 7- | sed -e \"s/^/[1m/\" -e \"s/ /[0m$(echo 2B | xxd -r -p)/\" | column -t -s \"$(echo 2B | xxd -r -p)\" | sort | less -SR "
+	co = checkout
+
+[delta]
+    side-by-side = true
+    navigate = true
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

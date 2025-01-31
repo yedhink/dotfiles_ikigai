@@ -1,0 +1,54 @@
+Xft.dpi:   72
+Xft.autohint:   0
+Xft.hinting:    1
+Xft.hintstyle:  hintslight
+Xft.lcdfilter:  lcddefault
+Xft.rgba:       rgb
+
+URxvt*termName:rxvt-unicode-256color
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!                        !!!!!!!!!!!!!!!!!!!!!! 
+!!!!! .Xresources / ikigai   !!!!!!!!!!!!!!!!!!!!!! 
+!!!!!                        !!!!!!!!!!!!!!!!!!!!!! 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!! URXVT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+URxvt.urgentOnBell: false
+URxvt.mapAlert:: false
+URxvt.visualBell:	false
+URxvt.cursorBlink:          true
+urxvt*depth: 32
+URxvt*scrollBar: false
+
+! Perl extensions
+URxvt.perl-ext-common: font-size
+URxvt.perl-ext: default,url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.underline: true
+
+! Key Maps
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-equal:  font-size:reset
+URxvt.keysym.C-slash:  font-size:show
+
+! FONT
+URxvt*font:             xft:Hasklug Nerd Font Mono:style=Regular:size=11,xft:Font\ Awesome\ 5\ Free\ Solid:style=Solid:antialias=true:pixelsize=11,xft:Wuncon\ Siji:style=Regular:pixelsize:11
+URxvt*italicFont:       xft:iosevka:regular:size=11
+!URxvt.letterSpace: -5
+!URxvt.lineSpace: -5
+
+! BORDER
+URxvt*borderWidth: 0
+URxvt.internalBorder: 24
+URxvt*borderLess: false
+URxvt.transparent: false
+
+! Geometry
+URxvt*geometry:  80x40

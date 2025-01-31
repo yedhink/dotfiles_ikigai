@@ -1,0 +1,254 @@
+#  __   ______                                        ______   __
+# /  | /      \                                      /      \ /  |
+# $$/ /$$$$$$  |        _______   ______   _______  /$$$$$$  |$$/   ______
+# /  |$$ ___$$ |       /       | /      \ /       \ $$ |_ $$/ /  | /      \
+# $$ |  /   $$<       /$$$$$$$/ /$$$$$$  |$$$$$$$  |$$   |    $$ |/$$$$$$  |
+# $$ | _$$$$$  |      $$ |      $$ |  $$ |$$ |  $$ |$$$$/     $$ |$$ |  $$ |
+# $$ |/  \__$$ |      $$ \_____ $$ \__$$ |$$ |  $$ |$$ |      $$ |$$ \__$$ |
+# $$ |$$    $$/       $$       |$$    $$/ $$ |  $$ |$$ |      $$ |$$    $$ |
+# $$/  $$$$$$/         $$$$$$$/  $$$$$$/  $$/   $$/ $$/       $$/  $$$$$$$ |
+#                                                                /  \__$$ |
+#                                                                $$    $$/
+#                                                                 $$$$$$/
+#
+#
+#  ▓▓▓▓▓▓▓▓▓▓
+# ░▓ author ▓ ikigai
+# ░▓ code   ▓ https://github.com/yedhink 
+# ░▓ mirror ▓ 
+# ░▓▓▓▓▓▓▓▓▓▓
+# ░░░░░░░░░░
+#
+
+set $mod Mod4
+set $term --no-startup-id urxvt
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:monospace 9
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 8
+
+# Before i3 v4.8, i used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec $term 
+bindsym $mod+Mod1+Return exec --no-startup-id urxvt; exec feh --bg-fill ~/Pictures/wallhaven-13117.jpg
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec " dmenu_run -nf '#F3F4F5' -nb '#2F343F' -sb '#1793D1' -sf '#f3f4f5' -fn 'monospace-10' -p 'run:'"
+
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+
+# start rofi (dmenu mode)
+bindsym $mod+z exec i3-dmenu-desktop --dmenu='rofi -dmenu -i -lines 10 -eh 1 -width 30 -padding 50 -opacity "85" -font "Droid Sans 14"'  
+
+# start rofi (window mode)
+bindsym $mod+Tab exec rofi -show window -i -lines 10 -eh 1 -width 50 -padding 50 -opacity "85" -font "Droid Sans 16"
+bindsym Mod1+Tab exec rofi -show window -i -lines 10 -eh 1 -width 50 -padding 50 -opacity "85" -font "Droid Sans 16"
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+#bindsym $mod++l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+bindsym $mod+Control+r exec ranger
+#;move container to workspaces 
+for_window [class="feh"] move container to workspace 4
+for_window [class="qbittorrent"] move container to workspace 4
+for_window [class="qutebrowser"] move container to workspace 2
+for_window [class="^.*"] border pixel 1 
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+# Color scheme
+set $bg-color 	         #1d1f21
+set $inactive-bg-color   #1d1f21
+set $text-color          #f5f5f5
+set $inactive-text-color #d0d0d0
+set $urgent-bg-color	 #ac4142
+
+#                       border              background         text                 indicator
+client.focused          $bg-color           $bg-color          $urgent-bg-color		$urgent-bg-color
+client.unfocused        $iancative-bg-color $inactive-bg-color $inactive-text-color $urgent-bg-color
+client.focused_inactive $iancative-bg-color $inactive-bg-color $inactive-text-color $urgent-bg-color
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $urgent-bg-color
+
+# Start i3bar 
+bar { 
+#status_command i3status
+	status_command exec .config/i3status/net-speed.sh
+	position bottom
+	mode dock
+	hidden_state show
+	tray_padding 6
+	#modifier $mod
+    strip_workspace_numbers yes 
+	colors {
+		background #000000
+		statusline #00A5FF #that neon blue
+	    separator #757575
+		#                  border             background         text
+		focused_workspace  $bg-color          #505050			 $text-color
+		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	}
+}
+
+# volume control
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2%- unmute
+bindsym XF86AudioMute exec amixer -q set Master toggle
+
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# screenshot
+bindsym Print exec scrot '%S:%M:%H_%Y-%m-%d_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots/'
+bindsym Mod1+Print exec scrot -u $HOME/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym Mod1+Shift+Print exec scrot -s $HOME/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+
+# Caps-lock indicator 
+# bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3status
+
+# window style
+new_window pixel 2
+new_float normal
+hide_edge_borders none
+
+
+# i3 gaps
+gaps inner 20 
+gaps outer 20
+
+# Change gaps dynamically
+bindsym $mod+Shift+d gaps inner current set 0; gaps outer current set 0
+bindsym $mod+Shift+t gaps inner current set 15; gaps outer current set 15
+bindsym $mod+bracketleft	gaps inner current plus 5
+bindsym $mod+bracketright	gaps inner current minus 5
+
+# custom keybinding to lockscreen, use --lock dim or --lock blur below for different backgrounds
+bindsym $mod+l exec --no-startup-id betterlockscreen -l
+
+# autostarted apps
+exec --no-startup-id compton --config ~/compton.conf -b
+exec --no-startup-id mpd
+# copy and paste buffer
+exec autocutsel
+# Autostart urxvt (or your default terminal) and output commands
+exec --no-startup-id ~/dotfiles_ikigai/scripts/init_workspace.sh

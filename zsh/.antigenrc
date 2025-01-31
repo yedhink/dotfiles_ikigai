@@ -1,0 +1,28 @@
+antigen use oh-my-zsh
+
+# bundles from default repo - oh my zsh plugins
+antigen bundle git
+antigen bundle npm
+antigen bundle nvm
+antigen bundle bundler
+antigen bundle rails
+antigen bundle "shrink-path"
+antigen bundle zoxide
+
+# docker related
+antigen bundle docker
+antigen bundle docker-compose
+
+# bundles from external repos
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# kubernetes
+antigen bundle kubectl
+
+# theme repo
+# the custom theme file is sourced in zshrc
+antigen theme romkatv/powerlevel10k
+
+antigen apply

@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/ikigai/Pictures/girlwithhairWall.png",
+    "alpha": "100",
+    "special": {
+        "background": "#b2b2b2",
+        "foreground": "#586e75",
+        "cursor": "#586e75"
+    },
+    "colors": {
+        "color0": "#d3d2d0",
+        "color1": "#e5322f",
+        "color2": "#198844",
+        "color3": "#e69014",
+        "color4": "#268bd2",
+        "color5": "#d33682",
+        "color6": "#2aa198",
+        "color7": "#dfddd5",
+        "color8": "#abaeaf",
+        "color9": "#d44d15",
+        "color10": "#586e75",
+        "color11": "#657b83",
+        "color12": "#839496",
+        "color13": "#6c71c4",
+        "color14": "#93a1a1",
+        "color15": "#dfddd5"
+    }
+}

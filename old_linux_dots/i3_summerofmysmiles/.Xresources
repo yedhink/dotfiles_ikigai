@@ -1,0 +1,117 @@
+Xft.dpi:   72
+Xft.autohint:   0
+Xft.hinting:    1
+Xft.hintstyle:  hintslight
+Xft.lcdfilter:  lcddefault
+Xft.rgba:       rgb
+
+!URxvt*termName: rxvt-256color
+
+URxvt*termName:rxvt-unicode-256color
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+
+rofi.color-enabled: true
+! Dark theme.
+rofi.theme: ~/dotfiles_ikigai/i3_summerofmysmiles/.config/rofi/colors-rofi-dark.rasi
+rofi.hide-scrollbar:true
+rofi.regex:true
+rofi.color-window: #000000, #000000, #000000
+rofi.color-normal: #000000, #c1c1c1, #000000, #394249, #ffffff
+rofi.color-active: #000000, #000000, #000000, #394249, #000000
+rofi.color-urgent: #000000, #ff1844, #000000, #394249, #ff1844
+
+! Compile xft: Attempt to find a visual with the given bit depth; option -depth.
+!URxvt*depth: 32
+
+! Compile xft: Turn on/off double-buffering for xft (default enabled).  On some card/driver combination enabling it
+! URxvt*buffered: boolean
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!                        !!!!!!!!!!!!!!!!!!!!!! 
+!!!!! .Xresources / RESLOVED !!!!!!!!!!!!!!!!!!!!!! 
+!!!!!                        !!!!!!!!!!!!!!!!!!!!!! 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!! URXVT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+URxvt.urgentOnBell: false
+URxvt.mapAlert:: false
+URxvt.visualBell: false 
+URxvt.cursorBlink:          true
+urxvt*depth: 32
+urxvt*background: [80]#000000 
+URxvt*scrollBar: false
+
+! Perl extensions
+URxvt.perl-ext-common: font-size
+URxvt.perl-ext: default,url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.underline: true
+
+! Key Maps
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-equal:  font-size:reset
+URxvt.keysym.C-slash:  font-size:show
+
+! FONT
+URxvt*font:             xft:iosevka:style=Bold:size=11
+URxvt*italicFont:       xft:Iosevka Term:regular:size=11
+
+! BORDER
+URxvt*borderWidth: 0
+URxvt.internalBorder: 24
+URxvt.borderColor: #000000
+URxvt*borderLess: false
+URxvt.transparent: false
+URxvt*geometry:  57x31
+
+! SPECIAL
+URxvt*foreground:   #a5a5c2
+URxvt*background:   #000000
+
+! Colors 0-15.
+*.color0: #000000
+*color0:  #000000
+*.color1: #A52A32
+*color1:  #A52A32
+*.color2: #D72E33
+*color2:  #D72E33
+*.color3: #C94640
+*color3:  #C94640
+*.color4: #E7514B
+*color4:  #E7514B
+*.color5: #50A328
+*color5:  #50A328
+*.color6: #9CA368
+*color6:  #9CA368
+*.color7: #a5a5c2
+*color7:  #a5a5c2
+*.color8: #737387
+*color8:  #737387
+*.color9: #A52A32
+*color9:  #A52A32
+*.color10: #D72E33
+*color10:  #D72E33
+*.color11: #C94640
+*color11:  #C94640
+*.color12: #E7514B
+*color12:  #E7514B
+*.color13: #50A328
+*color13:  #50A328
+*.color14: #9CA368
+*color14:  #9CA368
+*.color15: #a5a5c2
+*color15:  #a5a5c2
+
+*.foreground: #a5a5c2
+*.background: #000000
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!! end !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

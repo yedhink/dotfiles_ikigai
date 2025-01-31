@@ -1,0 +1,306 @@
+kt(){
+	pkill -f tmux
+	if [ $? != 0 ]; then
+		tmux
+	fi
+}
+zle -N kt
+bindkey -s '^[k' 'kt\n'
+
+gsize(){
+	for f in `git status --porcelain | sed 's#^...##'`; do
+		du -csh $f | head -n 1;
+	done | sort -nr;  echo "TOTAL:"; du -csh .
+}
+
+codi() {
+  local syntax="${1:-python}"
+  shift
+  vim -c \
+    "let g:startify_disable_at_vimenter = 1 |\
+    set bt=nofile ls=0 noru nonu nornu |\
+    hi ColorColumn ctermbg=NONE |\
+    hi VertSplit ctermbg=NONE |\
+    hi NonText ctermfg=0 |\
+    Codi $syntax" "$@"
+}
+
+# for changing the window title to current directory
+function precmd () {
+  window_title="\033]0;${PWD##*/}\007"
+  echo -ne "$window_title"
+}
+
+command rbenv rehash 2>/dev/null
+rbenv() {
+  local command
+  command="${1:-}"
+  if [ "$#" -gt 0 ]; then
+    shift
+  fi
+
+  case "$command" in
+  rehash|shell)
+    eval "$(rbenv "sh-$command" "$@")";;
+  *)
+    command rbenv "$command" "$@";;
+  esac
+}
+
+lansend() {
+	tar -cz "$@" | nc -q 10 -l -p 45454
+}
+lanreceive() {
+	nc -w 10 "$@" 45454 | tar -xz
+}
+
+pkgsizes() {
+dpkg-query --show --showformat='${Package;-50}\t${Installed-Size}\n' | sort -k 2 -n | grep -v deinstall | awk '{printf "%.3f MB \t %s\n", $2/(1024), $1}' | nvim -
+}
+
+
+find_in_files(){
+    if [[ $# == 0 ]]; then
+        echo 'Error: search term was not provided.'
+        return
+    fi
+    local match=$(
+      rg --no-messages --color=never --line-number "$1" |
+        fzf --no-multi --delimiter : \
+            --preview "bat --color=always --line-range {2}: {1}"
+      )
+    local file=$(echo "$match" | cut -d':' -f1)
+    if [[ -n $file ]]; then
+        $EDITOR "$file" +$(echo "$match" | cut -d':' -f2)
+    fi
+}
+
+alias fif='find_in_files'
+
+
+alias glNoGraph='git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr% C(auto)%an" "$@"'
+_gitLogLineToHash="echo {} | grep -o '[a-f0-9]\{7\}' | head -1"
+_viewGitLogLine="$_gitLogLineToHash | xargs -I % sh -c 'git show --color=always % | git diff'"
+_viewGitLogLineUnfancy="$_gitLogLineToHash | xargs -I % sh -c 'git show %'"
+
+# gls - git commit browser with previews and vim integration
+gls() {
+    glNoGraph |
+        fzf --no-sort --reverse --tiebreak=index --no-multi \
+            --ansi --preview="$_viewGitLogLine" \
+                --header "enter to view, alt-y to copy hash, alt-v to open in vim" \
+                --bind "enter:execute:$_viewGitLogLine   | less -R" \
+                --bind "alt-v:execute:$_viewGitLogLineUnfancy | nvim -" \
+                --bind "alt-y:execute:$_gitLogLineToHash | xclip"
+}
+
+gcli() {
+	while [ $# -gt 0 ]; do
+		case "$1" in
+			-a=*)
+				author="${1#*=}"
+				;;
+			-af=*)
+				after="${1#*=}"
+				;;
+			-un=*)
+				until="${1#*=}"
+				;;
+			-f=*)
+				file="${1#*=}"
+				;;
+			*)
+				printf "***************************\n"
+				printf "* Error: Invalid argument.*\n"
+				printf "***************************\n"
+		esac
+		shift
+	done
+	if [ -z $author ];then
+		author="yedhink"
+	fi
+	#notify-send -u critical -t 3000 "$(echo $author $after $until)"
+	# param validation
+	#if [[ ! `git log -n 1 $@ | head -n 1` ]] ;then
+	#	return
+	#fi
+	# filter by file string
+	local filter
+	# param existed, git log for file if existed
+	if [ -f $file ]; then
+		filter="-- $file"
+	fi
+	# git command
+	local gitlog=(
+	git log
+	--author=$author
+	--after=$after
+	--until=$until
+	--all
+	--date=format:'%d-%m-%Y'
+	--graph --color=always
+	--abbrev=7
+	--format='%ad %C(auto)%h %an %C(blue)%s %C(yellow)%cr'
+	$file
+	#$@
+	)
+	 # fzf command
+	 local fzf=(
+	 fzf
+	 --ansi --no-sort --reverse --tiebreak=index
+	 --preview "f() { set -- \$(echo -- \$@ | grep -o '[a-f0-9]\{7\}'); [ \$# -eq 0 ] || (git show --color=always \$1 $filter | delta --width=160;) }; f {}"
+	 --bind "ctrl-q:abort,ctrl-m:execute:
+	 (grep -o '[a-f0-9]\{7\}' | head -1 |
+		 xargs -I % sh -c 'git show --color=always % $filter') << 'FZF-EOF'
+			  {}
+			  FZF-EOF"
+			  --preview-window=down:60%
+	  )
+	# piping them
+	$gitlog | $fzf
+}
+
+rga-fzf() {
+	RG_PREFIX="/home/ikigai/.local/bin/ripgrep_all-v0.9.6-x86_64-unknown-linux-musl/rga --files-with-matches"
+	local file
+	file="$(
+		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+			fzf --sort --preview="[[ ! -z {} ]] && /home/ikigai/.local/bin/ripgrep_all-v0.9.6-x86_64-unknown-linux-musl/rga --pretty --context 5 {q} {}" \
+				--phony -q "$1" \
+				--bind "change:reload:$RG_PREFIX {q}" \
+				--preview-window="70%:wrap"
+	)" &&
+	echo "opening $file" &&
+	xdg-open "$file"
+}
+
+_fzf_complete_git() {
+    ARGS="$@"
+    local branches
+    branches=$(git branch -vv --all)
+    if [[ $ARGS == 'git co'* ]]; then
+        _fzf_complete --reverse --multi -- "$@" < <(
+            echo $branches
+        )
+    else
+        eval "zle ${fzf_default_completion:-expand-or-complete}"
+    fi
+}
+
+_fzf_complete_git_post() {
+    awk '{print $1}'
+}
+
+upd() {
+	# for transparency: So that the terminal outputs whatever Homebrew is doing in the background.
+	set -x;
+	brew update && brew upgrade
+	# Upgrades all casks (macOS applications) to the latest version without user interaction.
+	brew upgrade --cask --greedy
+    # Upgrade AstroNvim packages
+    nvim --headless +"Lazy sync" +qa
+}
+
+setTitlePreCmd() {
+  printf "\e]2;%s\a" `shrink_path -f -t -s`
+}
+
+setTitlePreExec() {
+  printf "\e]2;%s\a" "$1"
+}
+
+# place this after nvm initialization!
+autoUseNvmNode() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+
+gsync() {
+    defaultBranch="main"
+    if [ `git branch --list "master"` ]
+    then
+        defaultBranch="master"
+    fi
+    git checkout "$defaultBranch"
+    git pull origin "$defaultBranch"
+    git checkout -
+    git rebase "$defaultBranch"
+}
+
+gcom() {
+    defaultBranch="main"
+    if [ `git branch --list "master"` ]
+    then
+        defaultBranch="master"
+    elif [ `git branch --list "blog"` ]
+    then
+        defaultBranch="blog"
+    fi
+    git checkout "$defaultBranch"
+}
+
+gcob() {
+    gco $(git branch --sort='-committerdate' | fzf)
+}
+
+fman() {
+    old_ifs="$IFS"
+    IFS=","
+    new_args="$*"
+    IFS="$old_ifs"
+    args="web=1,webpacker=1,$new_args"
+    echo $args
+    foreman start -f Procfile.dev -c "$args"
+}
+
+yaalcp() {
+    nvm use
+    yarn install
+    current_directory=$(pwd)
+
+    if [[ "$current_directory" == *"neeto-ui"* || "$current_directory" == *"neeto-molecules"* ]]; then
+        build_command="yarn bundle"
+    else
+        build_command="yarn build"
+    fi
+
+    eval ${build_command}
+    yalc publish
+}
+
+pgbigbinarydumprestore() {
+    if [[ $# -eq 0 ]] ; then
+      dbpath_arg=`ls -1t ~/Downloads/*.dump 2>/dev/null | head -n 1`
+    else
+      dbpath_arg="$*"
+    fi
+
+    if [ -z "${dbpath_arg}" ]; then
+      echo "Provide proper path to database dump as argument to this command."
+      exit 1
+    fi
+
+    repository_name=$(git rev-parse --show-toplevel | awk -F'/' '{print $NF}' | awk '{$1=$1};1')
+    local_db_name="${repository_name}_development"
+    local_db_recreate_cmd="rails db:drop db:create"
+
+    # Change user name from ikigai to whatever is your postgres user's name
+    restore_cmd="pg_restore --verbose --clean --no-acl --no-owner -h localhost -U ikigai -d ${local_db_name} ${dbpath_arg}"
+    
+    echo "Restoring database dump from ${dbpath_arg} into ${local_db_name}...\n"
+    eval ${local_db_recreate_cmd}
+    eval ${restore_cmd}
+}

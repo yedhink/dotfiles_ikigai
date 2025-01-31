@@ -1,0 +1,33 @@
+# Don't let ripgrep vomit really long lines to my terminal, and show a preview.
+--max-columns=150
+--max-columns-preview
+
+# Add my 'web' type.
+--type-add
+web:*.{html,css,js}*
+
+# or
+--glob
+!git
+--glob
+!yarn.lock
+--glob
+!Gemfile.lock
+--glob
+!tmp
+--glob
+!build
+--glob
+!node_modules
+--glob
+!vendor
+--glob
+!*.svg
+--glob
+!*.cjs.js
+
+# Because who cares about case!?
+--smart-case
+
+# sort file names
+--sort-files
