@@ -1,8 +1,13 @@
 # Intro
 
-My macOs dotfiles is a product of my effort towards creating a sensible, and mostly terminal based productive environment which I can use to conquer my daily dev works. Looking back, in the last few years, some of the major jumps I have made are from `zsh -> fish`, `vim -> vscode -> neovim+tmux` and `urxvt -> ghostty`. I have grown over the mindset of being a `ricer` towards a more `productive` mindset, where, I only make changes that help me be more productive. Thus, I don't call myself a "ricer" nor a "minimalist" anymore!
+My **macOs dotfiles** is the end product of my effort towards creating a sensible, and mostly terminal based productive environment which I can use to conquer my daily dev works. Looking back, in the last few years, some of the major jumps I have made are from `zsh -> fish`, `vim -> vscode -> neovim+tmux` and `urxvt/st -> ghostty`.
 
-Over the years, I have come to a realisation that I don't change my system/OS often. Thus I don't need to use any fancy dotfiles manager to get things done. Just barebones `git` and some scripts does the job!
+I have grown over the mindset of being a `ricer` towards a more `productive` mindset, where, I only make changes that help me be more productive. Thus, I don't call myself a "ricer" nor a "minimalist" anymore!
+
+Over the years, I have had some strong realizations:
+- I don't need to use any fancy dotfiles manager like say `stow`, `yadm`, `dotbot` etc. I don't change my system/OS often. Thus just barebones `git` and some scripts gets the job done!
+- I like the idea of being able to tinker and craft the tool to my needs. My terminal, neovim and tmux configs are exactly that!
+- I like to try out new tools, which claims to be faster than the current tool that I use. Tried biome over eslint+prettier and I think I will switch.
 
 ## How to use this repo?
 
@@ -16,9 +21,10 @@ I would recommend that you cherry pick the configs that you feel might add benef
 - fzf(works in yazi too)
 - rg
 - fd
+- lazygit
 - yazi(i also use this inside neovim instead of neo-tree)
 
-Rest of the configs can be found in `.config`. Checkout `Brewfile`  and `.gemlist` files if you want to know more about specific stuff I use.
+Rest of the configs can be found in `.config`. Checkout `Brewfile`  and `.gemlist` files if you want to know more about specific stuff I use. You can install all the packages from `Brewfile` by running `brew bundle --file "./Brewfile"`.
 
 ## Screenshots
 
