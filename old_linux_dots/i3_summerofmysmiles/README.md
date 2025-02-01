@@ -3,16 +3,16 @@
 My summer theme , made for the love of Led Zeppelin!
 
 **Screenshots:**  
-![](https://github.com/yedhink/dotfiles_ikigai/blob/master/old_linux_dots/i3_summerofmysmiles/busySum.png)  
+![](https://github.com/yedhink/dotfiles_ikigai/blob/main/old_linux_dots/i3_summerofmysmiles/busySum.png)  
 
 **Distraction free reading and writing**  
-![](https://github.com/yedhink/dotfiles_ikigai/blob/master/old_linux_dots/i3_summerofmysmiles/free.png)    
+![](https://github.com/yedhink/dotfiles_ikigai/blob/main/old_linux_dots/i3_summerofmysmiles/free.png)    
 
 **Well...gotta study for exams too :(**
-![](https://github.com/yedhink/dotfiles_ikigai/blob/master/old_linux_dots/i3_summerofmysmiles/zat.png)  
+![](https://github.com/yedhink/dotfiles_ikigai/blob/main/old_linux_dots/i3_summerofmysmiles/zat.png)  
 
 **Led Zeppelin FTW**  
-![](https://github.com/yedhink/dotfiles_ikigai/blob/master/old_linux_dots/i3_summerofmysmiles/ledzep.png)  
+![](https://github.com/yedhink/dotfiles_ikigai/blob/main/old_linux_dots/i3_summerofmysmiles/ledzep.png)  
 
 ## Setup
 

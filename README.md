@@ -33,6 +33,8 @@ I would recommend that you cherry pick the configs that you feel might add benef
 
 Rest of the configs can be found in `.config`. Checkout `Brewfile` and `.gemlist` files if you want to know more about specific stuff I use. You can install all the packages from `Brewfile` by running `brew bundle --file "./Brewfile"`.
 
+PS: You can find my old linux dotfiles [here](old_linux_dots/).
+
 ## Screenshots
 
 - Neofetch is not my friend anymore:

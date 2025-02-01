@@ -128,48 +128,48 @@ My terminal emulator of choice is the lightweight, unicode, 256 color [urxvt](ht
 
 ## theme-hooked on a feeling
 included in `dotfiles_ikigai/i3_hooked_on_a_feeling` directory.  
-**[more screenshots and installation](https://github.com/yedhink/dotfiles_ikigai/tree/master/i3_hooked_on_a_feeling)**
-![](https://github.com/yedhink/dotfiles_ikigai/blob/master/old_linux_dots/i3_hooked_on_a_feeling/previews/hookedfeeling.png)  
+**[more screenshots and installation](https://github.com/yedhink/dotfiles_ikigai/tree/main/i3_hooked_on_a_feeling)**
+![](https://github.com/yedhink/dotfiles_ikigai/blob/main/old_linux_dots/i3_hooked_on_a_feeling/previews/hookedfeeling.png)  
 
 ## theme-summer of my smiles
 included in `dotfiles_ikigai/i3_summerofmysmiles` directory.  
-**[screenshots](https://github.com/yedhink/dotfiles_ikigai/blob/master/i3_summerofmysmiles/README.md)        [installation](https://github.com/yedhink/dotfiles_ikigai/blob/master/i3_summerofmysmiles/README.md)**
-![](https://github.com/yedhink/dotfiles_ikigai/blob/master/old_linux_dots/i3_summerofmysmiles/busySum.png)  
+**[screenshots](https://github.com/yedhink/dotfiles_ikigai/blob/main/i3_summerofmysmiles/README.md)        [installation](https://github.com/yedhink/dotfiles_ikigai/blob/main/i3_summerofmysmiles/README.md)**
+![](https://github.com/yedhink/dotfiles_ikigai/blob/main/old_linux_dots/i3_summerofmysmiles/busySum.png)  
 
 ## theme-the tricolor flag
 ## custom neofetch like system information
 A try at mimicking the colors of the [Flag of India](https://en.wikipedia.org/wiki/Flag_of_India) 
 
-![](https://github.com/yedhink/dotfiles_ikigai/blob/master/old_linux_dots/clean.png "my neofetch")
+![](https://github.com/yedhink/dotfiles_ikigai/blob/main/old_linux_dots/clean.png "my neofetch")
 
 ## autostarting terminal after boot up
 add any one of the applications you want on startup , to `~/dotfiles_ikigai/scripts/init_workspace.sh`  
 **detailed comments are provided in the file**  
 
-![](https://github.com/yedhink/dotfiles_ikigai/blob/master/old_linux_dots/dotfiles_startup.gif)
+![](https://github.com/yedhink/dotfiles_ikigai/blob/main/old_linux_dots/dotfiles_startup.gif)
 
 ## the ultimate super user prompt :D
 {♥‿♥} For me whenever I become "su", i need to be made aware of how "mighty" my powers are, since i've done stupid stuff before. :D
 
 make use of the file `~/dotfiles_ikiga/etc/bash.bashrc` to get the below output. (of course the requirements should already be installed)  
 
-![](https://github.com/yedhink/dotfiles_ikigai/blob/master/old_linux_dots/dotfiles_su.gif)
+![](https://github.com/yedhink/dotfiles_ikigai/blob/main/old_linux_dots/dotfiles_su.gif)
 
 ## busy
 vim, ranger, ncmpcpp, htop in action
 
-![](https://github.com/yedhink/dotfiles_ikigai/blob/master/old_linux_dots/busy.png)
+![](https://github.com/yedhink/dotfiles_ikigai/blob/main/old_linux_dots/busy.png)
 
 ## almighty-vim
 **"So dark ! You sure you're not from the DC Universe?"**
 
-![](https://github.com/yedhink/dotfiles_ikigai/blob/master/old_linux_dots/vimqt.png)
+![](https://github.com/yedhink/dotfiles_ikigai/blob/main/old_linux_dots/vimqt.png)
 
 ## ncmpcpp - lightweight music player and visualizer
 **"Is this the real life?  
    Is this just fantasy? "**
 
-![](https://github.com/yedhink/dotfiles_ikigai/blob/master/old_linux_dots/music.png)
+![](https://github.com/yedhink/dotfiles_ikigai/blob/main/old_linux_dots/music.png)
 
 ## qutebrowser - with my precious dark theme that saves me from the evil light
 **"we wants it. we needs it. Must have the precious"**  
@@ -177,30 +177,30 @@ vim, ranger, ncmpcpp, htop in action
 make use of `~/dotfiles_ikigai/.config/qutebrowser/inspected_css/sd.css` for the theme
 
 ### privacy above all
-![](https://github.com/yedhink/dotfiles_ikigai/blob/master/old_linux_dots/qtduck.png)
+![](https://github.com/yedhink/dotfiles_ikigai/blob/main/old_linux_dots/qtduck.png)
 
 ### isn't this soothing for your eyes? 
-![](https://github.com/yedhink/dotfiles_ikigai/blob/master/old_linux_dots/qtgithub.png)
+![](https://github.com/yedhink/dotfiles_ikigai/blob/main/old_linux_dots/qtgithub.png)
 
 ## fun part - ascii is pure art
 all ascii scripts are available in the `scripts` folder
 
-![](https://github.com/yedhink/dotfiles_ikigai/blob/master/old_linux_dots/funascii.png)
+![](https://github.com/yedhink/dotfiles_ikigai/blob/main/old_linux_dots/funascii.png)
 
 ## betterlockscreen - what a beauty!
 Brilliant work [Pavan Jadhaw](https://github.com/pavanjadhaw)  
 
 the wallpapers are changed automatically using `~/dotfiles_ikigai/scripts/lockscreen.sh` script. Add it to your `.xinitrc` just like i have done in [mine](https://github.com/yedhink/dotfiles_ikigai/blob/bcef377c1798094be9995cc2e77e24963df0e4c1/.xinitrc)  
 
-![](https://github.com/yedhink/dotfiles_ikigai/blob/master/old_linux_dots/btlockscreen.png)
+![](https://github.com/yedhink/dotfiles_ikigai/blob/main/old_linux_dots/btlockscreen.png)
 
 ## rofi 
 launch all kind of applications with ease  
 
-![](https://github.com/yedhink/dotfiles_ikigai/blob/master/old_linux_dots/rofiscreen.png)
+![](https://github.com/yedhink/dotfiles_ikigai/blob/main/old_linux_dots/rofiscreen.png)
 
 # license  
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/yedhink/dotfiles_ikigai/blob/master/LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/yedhink/dotfiles_ikigai/blob/main/LICENSE) file for details
 
 # spread the word
 Liked the setup? Appreciate the effort? Just give the repository a star :star: and spread the word if you found it useful
