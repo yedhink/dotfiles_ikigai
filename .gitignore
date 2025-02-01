@@ -25,3 +25,9 @@ $RECYCLE.BIN/
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
+
+# LSP stuff
+.ruby-lsp/
+
+# python stuff
+__pycache__/

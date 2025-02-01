@@ -33,7 +33,7 @@ fish_add_path -gaP $HOME/.rbenv/shims
 fish_add_path -gaP /opt/homebrew/bin
 
 # Python-related variables
-set -gx PYENV_ROOT "$HOME/.pyenv"
+# set -gx PYENV_ROOT "$HOME/.pyenv"
 set -gx BETTER_EXCEPTIONS 1
 
 # LibreOffice theme
@@ -66,3 +66,6 @@ set -gx FZF_BASE "/opt/homebrew/opt/fzf"
 
 # Go path
 set -gx GOPATH "~/go/bin/"
+
+# Zoxide database dir
+set -gx _ZO_DATA_DIR "$HOME/.config/zoxide/"

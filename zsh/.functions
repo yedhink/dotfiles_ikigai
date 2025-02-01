@@ -298,8 +298,8 @@ pgbigbinarydumprestore() {
     local_db_recreate_cmd="rails db:drop db:create"
 
     # Change user name from ikigai to whatever is your postgres user's name
-    restore_cmd="pg_restore --verbose --clean --no-acl --no-owner -h localhost -U ikigai -d ${local_db_name} ${dbpath_arg}"
-    
+    restore_cmd="pg_restore --verbose --clean --no-acl --no-owner -h localhost -U ${DATABASE_USER} -d ${local_db_name} ${dbpath_arg}"
+
     echo "Restoring database dump from ${dbpath_arg} into ${local_db_name}...\n"
     eval ${local_db_recreate_cmd}
     eval ${restore_cmd}
