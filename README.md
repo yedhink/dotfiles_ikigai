@@ -2,9 +2,10 @@
 
 These macOS dotfiles are the culmination of my ongoing quest to craft a sensible, mostly terminal-based dev environment — because if I’m gonna stare at a screen all day, it better be efficient. Over the years, I've undergone several evolutionary leaps:
 
+- `linux → macOs`: such is life - but no complaints whatsoever - more productive i'd say.
 - `zsh → fish`: because who doesn't like autocompletions that feel like mind-reading? Plus my zsh env was becoming slow af.
-- `vim → vscode → neovim+tmux`: went full circle but landed back a place which feels like home.
-- `urxvt/st → ghostty`: because bare metal performance in macOs plus smart memory consumption matters! A newly opened terminal should display it's prompt under 1 second, Ghostty does that elegantly.
+- `vim → vscode → neovim+tmux`: went full circle but landed back at a place which feels like home.
+- `urxvt/st → ghostty`: because bare metal performance in macOs plus smart memory consumption matters! A newly opened terminal should display it's prompt under 1 second, and Ghostty does that elegantly.
 
 Once upon a time, I was a proud `ricer`, tweaking every pixel and obsessing over font ligatures. But enlightenment struck — I now optimize for productivity, not just aesthetics. So, am I a ricer? Nope. A minimalist? Not quite. Just a dev who wants the fastest, smoothest workflow without unnecessary bloat.
 
