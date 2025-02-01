@@ -39,6 +39,7 @@ Rest of the configs can be found in `.config`. Checkout `Brewfile`  and `.gemlis
     - neovim can restore its last session based on which directory we are opening it from.
         - fzf powered file searching, grepping etc.
         - ruby-lsp doing it's magic and providing us goto defintion, linting etc.
+
 ![](images/workflow.gif)
 
 - Neovim - simple, elegant, fast!
