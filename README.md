@@ -37,25 +37,35 @@ Rest of the configs can be found in `.config`. Checkout `Brewfile` and `.gemlist
 - Neofetch is not my friend anymore:
 ![](images/home.png)
 
+---
+
 - A sample workflow where I am writing backend tests in Rails.
 ![](images/workflow.gif)
 
 Tools shown in the above workflow:
+
     - tmux session with dedicated window for tasks - like a window just for running tests, a window for writing backend code etc.
     - tests are being automatically run on file change using `entr`.
     - neovim can restore its last session based on which directory we are opening it from.
         - fzf powered file searching, grepping etc.
         - ruby-lsp doing it's magic and providing us goto definition, linting etc.
 
+---
 
 - Neovim - simple, elegant, fast!
 ![](images/neovim.png)
 
+---
+
 - Lazygit:
 ![](images/lazygit.png)
 
+---
+
 - Yazi - I hop file managers from time to time. Sticking with Yazi for now. Yazi also works as the file manager within Neovim.
 ![](images/yazi.png)
+
+---
 
 - Spotify in the terminal with vim keybindings:
 ![](images/spotify.png)
