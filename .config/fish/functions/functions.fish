@@ -9,6 +9,10 @@ function gcob -d "Fuzzy-find and checkout a branch"
   git branch --sort="-committerdate" | grep -v HEAD | string trim | fzf | read -l result; and git checkout "$result"
 end
 
+function sync_dots -d "Sync new config changes into dotfiles repo"
+  ruby ~/.dotfiles/scripts/sync_dots.rb
+end
+
 function fzf_ctrl_f
     set fzf_file (fd . | fzf)
     if test -z "$fzf_file"

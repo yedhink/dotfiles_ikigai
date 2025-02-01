@@ -16,6 +16,7 @@ I would recommend that you cherry pick the configs that you feel might add benef
 ### My tooooolzzzz/warezzzz...
 
 - ghostty
+- fish shell - zsh became slow af for me over the years - prolly cause i didn't maintain my configs well. Tried fish and instantly fell in love!
 - neovim(release version)
 - tmux
 - fzf(works in yazi too)

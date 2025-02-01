@@ -22,7 +22,6 @@ files = [
   '~/.fdignore',
   '~/.gemlist',
   '~/.gitconfig',
-  '~/.gitignore',
   '~/.ripgreprc',
   '~/.tmux.conf',
   '~/biome.jsonc',

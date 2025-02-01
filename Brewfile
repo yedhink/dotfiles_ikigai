@@ -56,6 +56,7 @@ brew "redis", restart_service: :changed
 brew "ripgrep"
 brew "sd"
 brew "sevenzip"
+brew "spotify_player"
 brew "starship"
 brew "tmux"
 brew "vips"
