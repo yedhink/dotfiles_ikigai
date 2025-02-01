@@ -8,6 +8,7 @@ Over the years, I have had some strong realizations:
 - I don't need to use any fancy dotfiles manager like say `stow`, `yadm`, `dotbot` etc. I don't change my system/OS often. Thus just barebones `git` and some scripts gets the job done!
 - I like the idea of being able to tinker and craft the tool to my needs. My terminal, neovim and tmux configs are exactly that!
 - I like to try out new tools, which claims to be faster than the current tool that I use. Tried biome over eslint+prettier and I think I will switch.
+- Resisting usage of AI code writing tools in the text editor is a good way to actually be a literate programmer!
 
 ## How to use this repo?
 
@@ -29,10 +30,15 @@ Rest of the configs can be found in `.config`. Checkout `Brewfile`  and `.gemlis
 
 ## Screenshots
 
-- "Cleanliness is all..."
+- I don't like to play with Neofetch anymore:
 ![](images/home.png)
 
-- A sample workflow where I am writing backend tests in Rails in my tmux sesh with `entr` running the tests:
+- A sample workflow where I am writing backend tests in Rails. Tools shown in the workflow:
+    - tmux session with dedicated window for tasks - like a window just for running tests, a window for writing backend code etc.
+    - tests are being automatically run on file change using `entr`.
+    - neovim can restore its last session based on which directory we are opening it from.
+        - fzf powered file searching, grepping etc.
+        - ruby-lsp doing it's magic and providing us goto defintion, linting etc.
 ![](images/workflow.gif)
 
 - Neovim - simple, elegant, fast!
