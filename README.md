@@ -37,8 +37,14 @@ Rest of the configs can be found in `.config`. Checkout `Brewfile`  and `.gemlis
 - Neovim - simple, elegant, fast!
 ![](images/neovim.png)
 
-- Yazi - I hop file managers from time to time. Sticking with Yazi for now.
+- Lazygit:
+![](images/lazygit.png)
+
+- Yazi - I hop file managers from time to time. Sticking with Yazi for now. Yazi also works as the file manager within Neovim.
 ![](images/yazi.png)
+
+- Spotify in the terminal with vim keybindings:
+![](images/spotify.png)
 
 ## TODO
 
