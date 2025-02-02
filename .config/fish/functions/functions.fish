@@ -3,6 +3,7 @@ function upd -d "Update all packages in macOs"
     brew update && brew upgrade
     brew upgrade --cask --greedy
     nvim --headless +"Lazy sync" +qa
+    sync_dots
 end
 
 function gcob -d "Fuzzy-find and checkout a branch"
