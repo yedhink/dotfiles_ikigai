@@ -65,7 +65,7 @@ set -gx HELIX_RUNTIME ~/src/helix/runtime
 set -gx FZF_BASE "/opt/homebrew/opt/fzf"
 
 # Go path
-set -gx GOPATH "~/go/bin/"
+set -gx GOPATH "$HOME/go"
 
 # Zoxide database dir
 set -gx _ZO_DATA_DIR "$HOME/.config/zoxide/"

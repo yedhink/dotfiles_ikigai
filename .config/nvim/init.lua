@@ -364,17 +364,14 @@ require('lazy').setup({
   -- Text object exchange movement. Useful when swapping arguments.
   {
     'gbprod/substitute.nvim',
-    keys = {
-      {
-        'X',
-        function()
-          require('substitute.exchange').visual()
-        end,
-        mode = 'x',
-      },
-    },
     config = function()
-      require('substitute').setup {}
+      local substitute = require 'substitute'
+      substitute.setup {}
+
+      local exchange = require 'substitute.exchange'
+      vim.keymap.set('n', 'sx', exchange.operator, { noremap = true })
+      vim.keymap.set('n', 'sxx', exchange.line, { noremap = true })
+      vim.keymap.set('x', ';', exchange.visual, { noremap = true })
     end,
   },
 
