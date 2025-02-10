@@ -6,6 +6,15 @@ function upd -d "Update all packages in macOs"
     sync_dots
 end
 
+function gcom
+    set defaultBranch "main"
+    if git branch --list "master" | grep -q "master"
+        set defaultBranch "master"
+    end
+    git checkout "$defaultBranch"
+end
+
+
 function gcob -d "Fuzzy-find and checkout a branch"
   git branch --sort="-committerdate" | grep -v HEAD | string trim | fzf | read -l result; and git checkout "$result"
 end
