@@ -22,7 +22,7 @@ palette = "default"
 [palettes.default]
 black = "#000000"
 left_bg_primary  = "#1892d9"
-left_bg_secondary  = "#f5cc00"
+left_bg_secondary  = "#42be65"
 
 [directory]
 style = "fg:black bg:left_bg_primary"

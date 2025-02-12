@@ -414,7 +414,7 @@ require('lazy').setup({
   require 'custom/plugins/autopairs',
   require 'custom/plugins/gitsigns',
   -- Colorscheme
-  require 'custom/plugins/kanagawa',
+  require 'custom/plugins/oxocarbon',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
