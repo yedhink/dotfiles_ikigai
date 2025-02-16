@@ -33,6 +33,16 @@ unless Dir.exist?(DOTFILES_DIR)
   exit(1)
 end
 
+def make_up_to_date
+  home_dir = ENV['HOME']
+  Dir.chdir(home_dir) do
+    puts "Generating latest Brewfile in #{home_dir}"
+    system('brew bundle --force --describe dump')
+    puts "Generating latest .gemlist in #{home_dir}"
+    system('gem list > .gemlist')
+  end
+end
+
 def sync_items(items, destination)
   items.each do |item|
     src = File.expand_path(item)
@@ -49,6 +59,7 @@ def sync_items(items, destination)
   end
 end
 
+make_up_to_date
 sync_items(dirs, DOTFILES_DIR)
 sync_items(files, DOTFILES_DIR)
 
