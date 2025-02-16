@@ -79,8 +79,13 @@ style = "bold red"
 # ---------------------------------
 
 # ---------- MODULES -------------
+[deno]
+format = '[$symbol($version )]($style)'
+detect_extensions = []
+
 [nodejs]
 format = '[$symbol($version )]($style)'
+detect_extensions = []
 
 [ruby]
 format = '[$symbol($version )]($style)'

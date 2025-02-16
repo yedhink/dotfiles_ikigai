@@ -11,6 +11,8 @@ macos-titlebar-style = transparent
 macos-titlebar-proxy-icon = hidden
 
 window-save-state = always
+window-position-x = 380
+window-position-y = 50
 
 font-family = "Maple Mono NF"
 font-size = 17

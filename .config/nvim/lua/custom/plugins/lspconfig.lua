@@ -134,7 +134,25 @@ return {
       ruby_lsp = {
         cmd = { 'ruby-lsp' },
       },
+      denols = {
+        cmd = { 'deno', 'lsp' },
+        root_dir = require('lspconfig.util').root_pattern('deno.json', 'deno.jsonc'),
+        settings = {
+          deno = {
+            enable = true,
+            suggest = {
+              imports = {
+                hosts = {
+                  ['https://deno.land'] = true,
+                },
+              },
+            },
+          },
+        },
+      },
       ts_ls = {
+        single_file_support = false,
+        root_dir = require('lspconfig.util').root_pattern 'package.json',
         settings = {
           javascript = {
             updateImportsOnFileMove = {
