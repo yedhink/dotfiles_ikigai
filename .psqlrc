@@ -1,0 +1,12 @@
+\set QUIET 1
+
+\encoding unicode
+
+\set PROMPT1 '%M:%[%033[1;31m%]%>%[%033[0m%] %n@%/%R%#%x '
+\set PROMPT2 '-> '
+
+\timing
+
+\x auto
+
+\set HISTCONTROL ignoredups

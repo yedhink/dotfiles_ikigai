@@ -394,6 +394,22 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'rgroli/other.nvim',
+    config = function()
+      require('other-nvim').setup {
+        mappings = {
+          'rails',
+          'golang',
+          'react',
+          'rust',
+        },
+      }
+
+      vim.api.nvim_set_keymap('n', '<leader>o', '<cmd>:Other<CR>', { noremap = true, silent = true })
+    end,
+  },
+
   require 'custom/plugins/which-key',
   -- LSP logic, servers etc
   require 'custom/plugins/lspconfig',

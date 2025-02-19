@@ -84,7 +84,7 @@ brew "pnpm"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Object-relational database system
-brew "postgresql@14", restart_service: :changed
+brew "postgresql@17", restart_service: :changed, link: true
 # Monitor data's progress through a pipe
 brew "pv"
 # Python version management

@@ -21,6 +21,8 @@ set -gx LC_ALL "en_US.UTF-8"
 
 # Update PATH
 fish_add_path -gaP ~/.local/bin
+fish_add_path -gaP /opt/homebrew/bin
+fish_add_path -gaP /opt/homebrew/sbin
 fish_add_path -gaP $HOME/.pyenv/bin
 fish_add_path -gaP $HOME/node_modules/.bin
 fish_add_path -gaP /snap/bin
@@ -30,7 +32,6 @@ fish_add_path -gaP $HOME/go/bin
 fish_add_path -gaP /usr/local/bin/lua-language-server
 fish_add_path -gaP $HOME/.rbenv/bin
 fish_add_path -gaP $HOME/.rbenv/shims
-fish_add_path -gaP /opt/homebrew/bin
 
 # Python-related variables
 # set -gx PYENV_ROOT "$HOME/.pyenv"

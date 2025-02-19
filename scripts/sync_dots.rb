@@ -25,7 +25,8 @@ files = [
   '~/.ripgreprc',
   '~/.tmux.conf',
   '~/biome.jsonc',
-  '~/Brewfile'
+  '~/Brewfile',
+  '~/.psqlrc'
 ]
 
 unless Dir.exist?(DOTFILES_DIR)
