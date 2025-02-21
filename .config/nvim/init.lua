@@ -131,6 +131,32 @@ local function augroup(name)
   return vim.api.nvim_create_augroup('yedhins-' .. name, { clear = true })
 end
 --
+-- When copy pasting from PDFs, there will be weird chars that we ought to replace
+vim.api.nvim_create_user_command('FixWeirdChars', function()
+  local weird_chars_map = {
+    ['\u{00A0}'] = ' ', -- Non-breaking space → Normal space
+    ['\u{200B}'] = '', -- Zero-width space → Remove
+    ['\u{202F}'] = ' ', -- Narrow no-break space → Normal space
+    ['\u{2060}'] = '', -- Word joiner → Remove
+    ['\u{201C}'] = '"', -- Left double quotation mark → Normal double quote
+    ['\u{201D}'] = '"', -- Right double quotation mark → Normal double quote
+    ['\u{2018}'] = "'", -- Left single quotation mark → Normal apostrophe
+    ['\u{2019}'] = "'", -- Right single quotation mark → Normal apostrophe
+    ['\u{2212}'] = '-', -- Minus sign (−) → Normal hyphen (-)
+    ['\u{FF0C}'] = ',', -- Full-width comma (，) → Normal comma (,)
+  }
+  local bufnr = vim.api.nvim_get_current_buf()
+  local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+  for i, line in ipairs(lines) do
+    for char, replacement in pairs(weird_chars_map) do
+      line = line:gsub(char, replacement)
+    end
+    lines[i] = line
+  end
+  vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
+  vim.opt_local.modified = false
+end, {})
+--
 -- Open output of command in new tab
 vim.api.nvim_create_user_command('Redir', function(ctx)
   local lines = vim.split(vim.api.nvim_exec(ctx.args, true), '\n', { plain = true })

@@ -41,7 +41,7 @@ set -gx BETTER_EXCEPTIONS 1
 set -gx SAL_USE_VCLPLUGIN "gtk3"
 
 # PostgreSQL configuration
-set -gx PSQL_EDITOR "/usr/bin/vim"
+set -gx PSQL_EDITOR "nvim"
 set -gx PSQLRC "$HOME/.psqlrc"
 
 # Less pager for bat
@@ -70,3 +70,4 @@ set -gx GOPATH "$HOME/go"
 
 # Zoxide database dir
 set -gx _ZO_DATA_DIR "$HOME/.config/zoxide/"
+

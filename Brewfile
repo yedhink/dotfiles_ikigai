@@ -53,6 +53,8 @@ brew "gifsicle"
 brew "git-delta"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
+# Graph visualization software from AT&T and Bell Labs
+brew "graphviz"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
 # Kubernetes package manager
