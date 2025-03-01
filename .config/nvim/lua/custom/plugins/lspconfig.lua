@@ -54,7 +54,7 @@ return {
         map('<leader>ws', require('fzf-lua').lsp_workspace_symbols, '[W]orkspace [S]ymbols')
         -- Rename the variable under your cursor.
         --  Most Language Servers support renaming across files, etc.
-        map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+        map('<F2>', vim.lsp.buf.rename, '[R]e[n]ame')
         -- Execute a code action, usually your cursor needs to be on top of an error
         -- or a suggestion from your LSP for this to activate.
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
@@ -139,7 +139,7 @@ return {
         root_dir = require('lspconfig.util').root_pattern('deno.json', 'deno.jsonc'),
         settings = {
           deno = {
-            enable = true,
+            enable = false,
             suggest = {
               imports = {
                 hosts = {
@@ -151,7 +151,7 @@ return {
         },
       },
       ts_ls = {
-        single_file_support = false,
+        single_file_support = true,
         root_dir = require('lspconfig.util').root_pattern 'package.json',
         settings = {
           javascript = {
