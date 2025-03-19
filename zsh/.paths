@@ -78,9 +78,6 @@ RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 export THOR_MERGE="code-insiders -d $1 $2"
 
-export SEMAPHORE_CI_ACCESS_TOKEN="ML_xVxf6dmxDsWy3hpv7"
-export SEMAPHORE_BB_ORG="bigbinary.semaphoreci.com"
-
 export SOLARGRAPH_GLOBAL_CONFIG="~/.config/solargraph/config.yml"
 
 export HELIX_RUNTIME=~/src/helix/runtime
