@@ -7,6 +7,8 @@ tap "homebrew/services"
 tap "jesseduffield/lazygit"
 tap "oven-sh/bun"
 tap "yt-dlp/taps"
+# Zstandard is a real-time compression algorithm
+brew "zstd"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
 # Library for command-line editing
