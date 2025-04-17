@@ -105,6 +105,8 @@ brew "ruby-build"
 brew "rbenv"
 # Persistent key-value database, with built-in net interface
 brew "redis", restart_service: :changed
+# Pack repository contents into a single AI-friendly file
+brew "repomix"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Intuitive find & replace CLI
