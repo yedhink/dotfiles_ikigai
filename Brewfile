@@ -31,10 +31,10 @@ brew "entr"
 brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c@76"
 # Image processing and image analysis library
 brew "leptonica"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@76"
 # C library for files containing sampled sound
 brew "libsndfile"
 # Play, record, convert, and stream audio and video
@@ -145,6 +145,8 @@ brew "jesseduffield/lazygit/lazygit"
 brew "oven-sh/bun/bun"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Rust-based terminal
+cask "warp"
 vscode "aliariff.vscode-erb-beautify"
 vscode "augment.vscode-augment"
 vscode "biomejs.biome"

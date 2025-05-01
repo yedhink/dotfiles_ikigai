@@ -6,7 +6,7 @@ function upd -d "Update all packages in macOs"
     sync_dots
 end
 
-# rebase strategy
+# rebase strategy 
 function gsyncr
     set defaultBranch "main"
     if git branch --list "master" | grep -q "master"
@@ -18,7 +18,7 @@ function gsyncr
     git rebase "$defaultBranch"
 end
 
-# merge strategy
+# merge strategy 
 function gsyncm
     set defaultBranch "main"
     if git branch --list "master" | grep -q "master"
